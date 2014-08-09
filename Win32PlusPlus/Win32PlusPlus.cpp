@@ -5,11 +5,15 @@
 
 #define BEGIN_WIN32PP_NAMESPACE namespace Win32PlusPlus {
 #define END_WIN32PP_NAMESPACE };
+
 #include "Thread.h"
 #include "LockableBase.h"
 #include "ScopedLock.h"
 #include "CriticalSection.h"
 #include "Mutex.h"
+#include "EventBase.h"
+#include "AutoResetEvent.h"
+#include "ManualResetEvent.h"
 
 
 

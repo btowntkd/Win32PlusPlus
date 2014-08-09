@@ -83,8 +83,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AutoResetEvent.h" />
     <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="EventBase.h" />
     <ClInclude Include="LockableBase.h" />
+    <ClInclude Include="ManualResetEvent.h" />
     <ClInclude Include="Mutex.h" />
     <ClInclude Include="ScopedLock.h" />
     <ClInclude Include="stdafx.h" />
