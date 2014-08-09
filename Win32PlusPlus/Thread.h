@@ -2,28 +2,29 @@
 
 BEGIN_WIN32PP_NAMESPACE
 
-
 class Thread
 {
 public:
-	Thread(HANDLE hThread) :
-		m_hThread(hThread)
-	{ }
 	virtual ~Thread(void) { }
 
-	bool IsAlive() 
+	virtual bool IsAlive()
 	{
 		return ::WaitForSingleObject(m_hThread, 0) == WAIT_TIMEOUT;
 	}
 
-	void Join() 
+	virtual void Join()
 	{
 		::WaitForSingleObject(m_hThread, INFINITE);
 	}
 
-	bool Join(DWORD timeoutMilliseconds)
+	virtual bool Join(DWORD timeoutMilliseconds)
 	{
 		return ::WaitForSingleObject(m_hThread, timeoutMilliseconds) == WAIT_OBJECT_0;
+	}
+
+	HANDLE GetHandle()
+	{
+		return m_hThread;
 	}
 
 	static Thread Create(LPTHREAD_START_ROUTINE fpStartRoutine, LPVOID pParam)
@@ -31,6 +32,16 @@ public:
 		HANDLE hThread = ::CreateThread(NULL, NULL, fpStartRoutine, pParam, NULL, NULL);
 		return Thread(hThread);
 	}
+
+	static Thread FromHandle(HANDLE hThread)
+	{
+		return Thread(hThread);
+	}
+
+protected:
+	Thread(HANDLE hThread) :
+		m_hThread(hThread)
+	{ }
 
 private:
 	HANDLE m_hThread;
