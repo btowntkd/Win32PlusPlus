@@ -20,9 +20,10 @@ public:
 	{
 		::WaitForSingleObject(m_hThread, INFINITE);
 	}
-	void Join(DWORD timeoutMilliseconds)
+
+	bool Join(DWORD timeoutMilliseconds)
 	{
-		::WaitForSingleObject(m_hThread, timeoutMilliseconds);
+		return ::WaitForSingleObject(m_hThread, timeoutMilliseconds) == WAIT_OBJECT_0;
 	}
 
 	static Thread Create(LPTHREAD_START_ROUTINE fpStartRoutine, LPVOID pParam)
