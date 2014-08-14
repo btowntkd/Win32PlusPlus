@@ -3,7 +3,7 @@
 
 BEGIN_WIN32PP_NAMESPACE
 
-class AutoResetEvent : EventBase
+class AutoResetEvent : public EventBase
 {
 public:
 

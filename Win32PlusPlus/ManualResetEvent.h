@@ -3,7 +3,7 @@
 
 BEGIN_WIN32PP_NAMESPACE
 
-class ManualResetEvent : EventBase
+class ManualResetEvent : public EventBase
 {
 public:
 	virtual void Reset()
